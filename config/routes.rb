@@ -1,4 +1,10 @@
 DemoSite::Application.routes.draw do
+  get "page/home"
+
+  get "page/contacts"
+
+  get "page/about"
+
   resources :microposts
 
   resources :users
