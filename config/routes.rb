@@ -5,6 +5,8 @@ DemoSite::Application.routes.draw do
 
   get "page/about"
 
+  get "page/help"
+
   resources :microposts
 
   resources :users
