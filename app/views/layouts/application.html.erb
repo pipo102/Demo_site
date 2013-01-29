@@ -2,13 +2,33 @@
 <html>
 <head>
   <title><%= title(@title) %></title>
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
   <%= stylesheet_link_tag    "application", :media => "all" %>
+  <!-- prilagodjeni osnovni css -->
+  <%= stylesheet_link_tag    "custom", :media => "screen" %>  
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="container">
+    <header>
+      <%= image_tag("logo.jpg", :alt => "demo project", :class => "round" ) %>
+      <nav class="round">
+        <ul>
+          <li><%= link_to "Home", "#" %></li>
+          <li><%= link_to "About", "#" %></li>
+          <li><%= link_to "Sign_in", "#" %></li>
+        </ul>
+      </nav>
+    </header>
+    <!-- sadrzaj ide tu :) -->
+    <section class="round">
 
-<%= yield %>
+      <%= yield %>
 
+    </section>
+  </div>
 </body>
 </html>
