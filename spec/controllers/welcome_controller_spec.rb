@@ -8,6 +8,12 @@ describe WelcomeController do
       get 'index'
       response.should be_success
     end
+
+    it "should have standard title" do
+      get 'index'
+
+      response.should have_selector("title", :content => "Demo")
+    end
   end
 
 end 

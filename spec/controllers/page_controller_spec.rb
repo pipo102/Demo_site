@@ -2,9 +2,9 @@ require 'spec_helper'
 
 describe PageController do
 render_views
-before(:each) do
-  @main_title = "RoR SAPP |"
-end
+  before(:each) do
+    @main_title = "RoR SAPP |"
+  end
 
   describe "GET 'home'" do
     it "returns http success" do
@@ -15,6 +15,23 @@ end
     it "should have appropriate title" do
       get 'home'
       response.should have_selector("title", :content => @main_title + " Home") 
+    end
+  end
+
+  describe "GET 'places'" do
+    it "returns http success" do
+      get 'places'
+      response.should be_success
+    end
+
+    it "has appropriate title" do
+      get 'places'
+      response.should have_selector("title", :content => @main_title + " Places")
+    end
+
+    it "has screaming part in content" do
+      get 'places'
+      response.should have_selector("p", :content => "PLACES")
     end
   end
 

@@ -7,6 +7,8 @@ DemoSite::Application.routes.draw do
 
   get "page/help"
 
+  get "page/places"
+
   resources :microposts
 
   resources :users
