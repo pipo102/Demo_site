@@ -1,5 +1,8 @@
 DemoSite::Application.routes.draw do
 
+  get 'r_users/new'
+  match '/sign_up', :to => 'r_users#new'
+
   match '/contacts', :to => 'page#contacts'
 
   match '/help', :to => 'page#help'

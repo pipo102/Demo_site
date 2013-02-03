@@ -8,4 +8,8 @@ module ApplicationHelper
       "RoR SAPP | #{@title}"
     end
   end
+  #logo part
+  def logo
+    image_tag("logo.jpg", :alt => "demo project", :class => "round" )
+  end
 end
