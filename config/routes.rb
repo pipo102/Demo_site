@@ -1,13 +1,12 @@
 DemoSite::Application.routes.draw do
-  get "page/home"
 
-  get "page/contacts"
+  match '/contacts', :to => 'page#contacts'
 
-  get "page/about"
+  match '/help', :to => 'page#help'
 
-  get "page/help"
-
-  get "page/places"
+  match '/about', :to => 'page#about'
+  
+  match '/places', :to => 'page#places'
 
   resources :microposts
 
@@ -64,7 +63,7 @@ DemoSite::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'welcome#index'
+  root :to => 'page#home'
 
   # See how all your routes lay out with "rake routes"
 
