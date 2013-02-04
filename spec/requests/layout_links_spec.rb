@@ -44,7 +44,7 @@ describe "LayoutLinks" do
 
     click_link "Home"
     response.should have_selector('title', :content => "Home")
-
+#it requires to visit 'Home' page first in order to pass
     click_link "Sign up now!"
     response.should have_selector('title', :content => "Sign up")
   end
