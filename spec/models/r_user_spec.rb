@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: users
+# Table name: r_users
 #
 #  id         :integer          not null, primary key
 #  name       :string(255)
@@ -9,12 +9,8 @@
 #  updated_at :datetime         not null
 #
 
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+require 'spec_helper'
 
-one:
-  name: MyString
-  email: MyString
-
-two:
-  name: MyString
-  email: MyString
+describe RUser do
+  pending "add some examples to (or delete) #{__FILE__}"
+end

@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: users
+# Table name: r_users
 #
 #  id         :integer          not null, primary key
 #  name       :string(255)
@@ -9,12 +9,8 @@
 #  updated_at :datetime         not null
 #
 
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+class RUser < ActiveRecord::Base
+  attr_accessible :email, :name
 
-one:
-  name: MyString
-  email: MyString
-
-two:
-  name: MyString
-  email: MyString
+  validates(:name, presence: true)
+end
