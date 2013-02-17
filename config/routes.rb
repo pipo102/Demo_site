@@ -1,6 +1,5 @@
 DemoSite::Application.routes.draw do
 
-  get 'r_users/new'
   match '/sign_up', :to => 'r_users#new'
 
   match '/contacts', :to => 'page#contacts'
@@ -14,6 +13,8 @@ DemoSite::Application.routes.draw do
   resources :microposts
 
   resources :users
+
+  resources :r_users
 
   get "welcome/index"
 
