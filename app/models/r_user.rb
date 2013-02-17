@@ -12,5 +12,12 @@
 class RUser < ActiveRecord::Base
   attr_accessible :email, :name
 
-  validates(:name, presence: true)
+  email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+
+  validates :name,  presence: true,
+                    length: { maximum: 21 }
+  validates :email, presence: true,
+                    length: { minimum: 5, maximum: 35},
+                    format: { with: email_regex},
+                    uniqueness: { case_sensitive: false}
 end
