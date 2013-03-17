@@ -6,7 +6,6 @@ class RUsersController < ApplicationController
   def show
     @title ="RUsers"
 
-    @ruser = RUser.first
-    # @ruser = RUser.find(parms[:id])
+    @ruser = RUser.find(params[:id])
   end
 end
