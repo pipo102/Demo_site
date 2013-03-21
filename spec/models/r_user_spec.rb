@@ -14,7 +14,12 @@ require 'spec_helper'
 describe RUser do
 
   before (:each) do
-    @atr = {name:"Mirko", email:"hrckoland@dot.net"}
+    @atr = {
+      name:"Mirko",
+      email:"hrckoland@dot.net",
+      password: "foobar",
+      confirm_password: "foobar"
+    }
   end
 
   it "should create user with given attributes" do
@@ -70,5 +75,31 @@ describe RUser do
     RUser.create!(@atr)
     User_with_duplicated_mail = RUser.new(@atr.merge(email:upcase_mail))
     User_with_duplicated_mail.should_not be_valid
+  end
+
+  describe "password validations" do
+
+    it "should require password" do
+      no_pass = RUser.new(@atr.merge(password:"", confirm_password:""))
+      no_pass.should_not be_valid
+    end
+
+    it "should require matching password confirmation" do
+      invalid_confirm = RUser.new(@atr.merge(confirm_password:"invalid"))
+      invalid_confirm.should_not be_valid
+    end
+
+    it "should reject short password" do
+      pass = "a" * 5
+      short_pass = RUser.new(@atr.merge(password: pass, confirm_password: pass))
+      ahort_pass.should_not be_valid
+    end
+
+    it "should reject long password" do
+      pass = "a" * 41
+      long_pass = RUser.new(@atr.merge(password: pass, confirm_password: pass))
+      long_pass.should_not be_valid
+    end
+
   end
 end
