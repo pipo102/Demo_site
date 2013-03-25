@@ -12,6 +12,8 @@
 class RUser < ActiveRecord::Base
   attr_accessible :email, :name
 
+  has_many :microposts
+
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   validates :name,  presence: true,
