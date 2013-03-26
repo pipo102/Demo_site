@@ -7,11 +7,10 @@ body {
 
 header {
   padding-top: 20px;
-}
-
-header img{
-  padding: 1em;
-  background: #fff;
+  img {
+    padding: 1em;
+    background: #fff;
+  }
 }
 /*
 .top_h {
@@ -28,10 +27,9 @@ section {
   font-size: 120%;
   padding: 20px;
   background: white;
-}
-
-section h1 {
-  font-size: 200%;
+  h1 {
+    font-size: 200%;
+  }
 }
 
 /* Links */
@@ -39,15 +37,13 @@ section h1 {
 a {
   color: #09c;
   text-decoration: none;
-}
-
-a:hover {
-  color: #069;
-  text-decoration: underline;
-}
-
-a:visited {
-  color: #069;
+  &:hover {
+    color: #069;
+    text-decoration: underline;
+  }
+  &:visited {
+    color: #069;
+  }
 }
 
 /* Navigation */
@@ -60,32 +56,28 @@ nav {
   background: white;
   padding: 0 0.7em;
   white-space: nowrap;
+  ul {
+    margin: 0px;
+    padding: 0px;
+    li {
+      list-style-type: none;
+      display: inline-block;
+      padding: 0.2em 3px;
+      a {
+        padding: 0 5px;
+        font-weight: bold;
+        &:visited {
+          color: #09c;
+        }
+        &:hover {
+          text-decoration: underline;
+          background: white;
+        }
+      }
+    }
+  }
 }
 
-nav ul {
-  margin: 0px;
-  padding: 0px;
-}
-
-nav ul li {
-  list-style-type: none;
-  display: inline-block;
-  padding: 0.2em 3px;
-}
-
-nav ul li a {
-  padding: 0 5px;
-  font-weight: bold;
-}
-
-nav ul li a:visited {
-  color: #09c;
-}
-
-nav ul li a:hover {
-  text-decoration: underline;
-  background: white;
-}
 /*Footer styling */
 
 footer {
@@ -94,10 +86,9 @@ footer {
   margin-left: auto;
   margin-right: auto;
   width: 960px;
-}
-
-footer nav {
-  float: none;
+  nav {
+    float: none;
+  }
 }
 
 /*Sign_up butto */
@@ -113,10 +104,9 @@ a.sign_up_button {
   font-size: 150%;
   font-weight: bold;
   padding: 20px;
-}
-
-a.sign_up_button:hover{
-  background: #235;
+  &:hover{
+    background: #235;
+  }
 }
 
 /* round corners (not in IE) */
