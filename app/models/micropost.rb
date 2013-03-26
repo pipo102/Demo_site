@@ -10,7 +10,7 @@
 #
 
 class Micropost < ActiveRecord::Base
-  attr_accessible :content, :user_id
+  attr_accessible :content, :r_user_id
 
   belongs_to :r_user
   

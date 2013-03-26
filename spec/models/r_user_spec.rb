@@ -13,34 +13,25 @@ require 'spec_helper'
 
 describe RUser do
 
-  before (:each) do
-    @atr = {
+  before { 
+    @atr = RUser.new(
       name:"Mirko",
       email:"hrckoland@dot.net",
       password: "foobar",
       confirm_password: "foobar"
-    }
-  end
+    )
+  }
 
-  it "should create user with given attributes" do
-    RUser.create(@atr)
-  end
+  subject(@atr)
 
-  it "should require a name" do 
-    no_name_ruser = RUser.new(@atr.merge(name:""))
-    no_name_ruser.should_not be_valid
-  end
+  it {should respond_to(:name)}
+  it {should respond_to(:email)}
+  it {should be_valid}
 
-  it "should require email" do
-    no_mail_user = RUser.new(@atr.merge(email:""))
-    no_mail_user.should_not be_valid
-  end
-
-  it "should reject names that are too long" do
-    loname = "a" * 22
-    to_loong_name = RUser.new(@atr.merge(name: loname))
-    to_loong_name.should_not be_valid
-  end
+  describe "when names are too long" do
+    before {@atr.name = "a" * 22}
+    it {should_not be_valid}
+  end 
 
   it "should have minimum long mail" do
     examp = "x@s"
