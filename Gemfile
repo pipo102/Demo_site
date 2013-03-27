@@ -13,6 +13,7 @@ group :development do
   gem 'wirble'
   gem 'hirb'
   gem 'awesome_print'
+  gem 'database_cleaner'
 end
 
 group :test do
