@@ -14,7 +14,7 @@ require 'spec_helper'
 describe RUser do
 
   before { 
-    @atr = RUser.new(name:"Nett", email:"hrckoland@com.net")
+    @atr = RUser.new(name:"Nety", email:"hkoland@com.net")
   }
 
   subject(@atr)
