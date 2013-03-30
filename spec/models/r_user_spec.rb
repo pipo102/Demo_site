@@ -13,29 +13,27 @@ require 'spec_helper'
 
 describe RUser do
 
-  before { 
-    @atr = RUser.new(name:"Nety", email:"hkoland@com.net")
-  }
+  before {@atr = RUser.new(name:"Mali", email:"nitkov@gdj.com")}
 
   subject(@atr)
   
-  it {should be_valid}
-  it {should respond_to(:name)}
-  it {should respond_to(:email)}
+    it {expect(@atr).to be_valid}
+    it {expect(@atr).to respond_to(:name)}
+    it {expect(@atr).to respond_to(:email)}
 
   describe "when names are too long" do
     before {@atr.name = "a" * 22}
-    it {should_not be_valid}
+    it {expect(@atr).not_to be_valid}
   end 
 
   describe "should have minimum long mail" do
     before {@atr.email="3@w.c"}
-    it {should_not be_valid} 
+    it {expect(@atr).not_to be_valid} 
   end
 
   describe "should have maximum long mail" do
     before {@atr.email= "@" * 36} 
-    it {should_not be_valid}
+    it {expect(@atr).not_to be_valid}
   end
 
   describe "should have valid email" do
@@ -63,7 +61,7 @@ describe RUser do
       astar = @atr.dup
       astar.save
     end
-    it {should_not be_valid}
+    it {expect(@atr).not_to be_valid}
   end
 
 end
