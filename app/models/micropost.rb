@@ -10,9 +10,9 @@
 #
 
 class Micropost < ActiveRecord::Base
-  attr_accessible :content, :user_id
+  attr_accessible :content, :r_user_id
 
-  belongs_to :user
+  belongs_to :r_user
   
   validates :content, :length => { :maximum => 30}
 end

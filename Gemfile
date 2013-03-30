@@ -10,6 +10,10 @@ gem 'mysql2'
 group :development do
   gem 'annotate'
   gem 'rspec-rails'
+  gem 'wirble'
+  gem 'hirb'
+  gem 'awesome_print'
+  gem 'database_cleaner'
 end
 
 group :test do
