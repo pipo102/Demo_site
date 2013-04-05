@@ -13,13 +13,17 @@ require 'spec_helper'
 
 describe RUser do
 
-  before {@atr = RUser.new(name:"Mali", email:"nitkov@gdj.com")}
+  before {@atr = RUser.new(name:"Mali", email:"nitkov@gdj.com", password:"foobar", password_confirmation:"foobar")}
 
   subject(@atr)
   
     it {expect(@atr).to be_valid}
     it {expect(@atr).to respond_to(:name)}
     it {expect(@atr).to respond_to(:email)}
+    it {expect(@atr).to respond_to(:password_digest)}
+    it {expect(@atr).to respond_to(:password)}
+    it {expect(@atr).to respond_to(:password_confirmation)}
+    it {expect(@atr).to respond_to(:authenticaate)}
 
   describe "when names are too long" do
     before {@atr.name = "a" * 22}
@@ -48,7 +52,7 @@ describe RUser do
 
   describe "shoudl reject invalid mail" do
     it "should not be valid" do
-      addresses = %w[1233.com  .@.com ___DSFODF_@jh.]
+      addresses = %w[1233.com  .@.com ___DSFODF_@jh. test@mik..com]
       addresses.each do |adres|
         @atr.email = adres
         expect(@atr).not_to be_valid
@@ -64,4 +68,39 @@ describe RUser do
     it {expect(@atr).not_to be_valid}
   end
 
+  describe "should reject empty password" do
+    before {@atr.password = @atr.password_confirmation = " "}
+    it {expect(@atr).not_to be_valid}
+  end
+
+  describe "should reject mismatched password" do
+    before {@atr.password_confirmation = "mismatch"}
+    it {expect(@atr).not_to be_valid}
+  end
+
+  describe "password_confirmation should not be nil" do
+    before {@atr.password_confirmation = nil}
+    it {expect(@atr).not_to be_valid}
+  end
+
+  describe "should not have short password" do
+    before {@atr.password = @atr.password_confirmation = "a" * 5}
+    it {expect(@atr).not_to be_valid }
+  end
+
+  describe "return value of authenticate method" do
+    before{ @atr.save }
+    let(:found_usr) {RUser.find_by_email(@atr.email)}
+
+    desccribe "with valid password" do
+      it { expect(@atr).to eql(found_usr.authenticate(@atr.password))}
+    end
+
+    describe "with invalid password" do
+      let(:invalid_pass) {found_usr.authenticate("invalid")}
+
+      it { expect(@atr).not_to eql(invalid_pass) }
+      specify { expect(invalid_pass).to be_false }
+    end
+  end
 end

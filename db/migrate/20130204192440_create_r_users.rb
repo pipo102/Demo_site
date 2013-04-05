@@ -4,6 +4,7 @@ class CreateRUsers < ActiveRecord::Migration
       t.string :name
       t.string :email
 
+
       t.timestamps
     end
   end
