@@ -92,7 +92,7 @@ describe RUser do
     before{ @atr.save }
     let(:found_usr) {RUser.find_by_email(@atr.email)}
 
-    desccribe "with valid password" do
+    describe "with valid password" do
       it { expect(@atr).to eql(found_usr.authenticate(@atr.password))}
     end
 
