@@ -13,7 +13,10 @@ require 'spec_helper'
 
 describe RUser do
 
-  before {@atr = RUser.new(name:"Mali", email:"nitkov@gdj.com", password:"foobar", password_confirmation:"foobar")}
+  before do 
+    @atr = RUser.new(name:"Mali", email:"nitkov@gdj.com",
+                      password:"foobar", password_confirmation:"foobar")
+  end
 
   subject(@atr)
   
@@ -23,7 +26,7 @@ describe RUser do
     it {expect(@atr).to respond_to(:password_digest)}
     it {expect(@atr).to respond_to(:password)}
     it {expect(@atr).to respond_to(:password_confirmation)}
-    it {expect(@atr).to respond_to(:authenticaate)}
+    it {expect(@atr).to respond_to(:authenticate)}
 
   describe "when names are too long" do
     before {@atr.name = "a" * 22}
@@ -50,7 +53,7 @@ describe RUser do
     end
   end
 
-  describe "shoudl reject invalid mail" do
+  describe "should reject invalid mail" do
     it "should not be valid" do
       addresses = %w[1233.com  .@.com ___DSFODF_@jh. test@mik..com]
       addresses.each do |adres|

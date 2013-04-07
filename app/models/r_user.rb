@@ -10,16 +10,22 @@
 #
 
 class RUser < ActiveRecord::Base
-  attr_accessible :email, :name
+  attr_accessible :email, :name, :password, :password_confirmation
 
   has_many :microposts
 
-  email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  has_secure_password
+
+  EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
+
+  validates :password, length: { minimum: 6}
+
+  validates :password_confirmation, presence: true
 
   validates :name,  presence: true,
                     length: { maximum: 21 }
   validates :email, presence: true,
                     length: { minimum: 6, maximum: 35},
-                    format: { with: email_regex},
+                    format: { with: EMAIL_REGEX},
                     uniqueness: { case_sensitive: false}
 end
